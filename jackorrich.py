@@ -55,7 +55,7 @@ class App:
 
     def update(self):
         if self.is_goal or self.is_game_over:
-            if pyxel.btnp(pyxel.KEY_A) or pyxel.btn(pyxel.GAMEPAD1_BUTTON_B):
+            if pyxel.btnp(pyxel.KEY_A) or pyxel.btnv(pyxel.GAMEPAD1_BUTTON_B):
                 self.restart_game()
             return  # ゲーム終了時は操作無効
 
@@ -71,11 +71,11 @@ class App:
                 self.is_game_over = True
 
         # 操作判定
-        if pyxel.btn(pyxel.KEY_LEFT) or pyxel.btn(pyxel.GAMEPAD1_BUTTON_DPAD_LEFT):
+        if pyxel.btn(pyxel.KEY_LEFT) or pyxel.btnv(pyxel.GAMEPAD1_BUTTON_DPAD_LEFT):
             if -3 < self.dx:
                 self.dx -= 1
             self.pldir = -1
-        elif pyxel.btn(pyxel.KEY_RIGHT) or pyxel.btn(pyxel.GAMEPAD1_BUTTON_DPAD_RIGHT):
+        elif pyxel.btn(pyxel.KEY_RIGHT) or pyxel.btnv(pyxel.GAMEPAD1_BUTTON_DPAD_RIGHT):
             if self.dx < 3:
                 self.dx += 1
             self.pldir = 1
@@ -104,7 +104,7 @@ class App:
         if self.jump == 0:
             if self.chkwall(self.x, self.y + 1) == 0:
                 self.jump = 2
-            if pyxel.btnp(pyxel.KEY_SPACE) or pyxel.btn(pyxel.GAMEPAD1_BUTTON_A):
+            if pyxel.btnp(pyxel.KEY_SPACE) or pyxel.btnv(pyxel.GAMEPAD1_BUTTON_A):
                 self.dy = 8
                 self.jump = 1
         else:
@@ -161,6 +161,6 @@ class App:
             pyxel.text(self.scroll_x + 45, self.scroll_y + 56, "GAME OVER!", 7)
 
         if self.is_goal or self.is_game_over:
-            pyxel.text(self.scroll_x + 30, self.scroll_y + 70, "PRESS A KEY TO RESTART", 7)
+            pyxel.text(self.scroll_x + 20, self.scroll_y + 70, "PRESS A KEY TO RESTART", 7)
 
 App()
