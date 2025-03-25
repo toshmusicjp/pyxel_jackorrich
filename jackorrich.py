@@ -151,7 +151,7 @@ class App:
         pyxel.blt(self.x, self.y, 0, 0, 8, self.pldir * 8, 8, 0)
 
         # 画面右上にスコアと残り時間表示
-        pyxel.text(self.scroll_x + pyxel.width - 48, self.scroll_y + 5, f"SCORE: {self.score}", 7)
+        pyxel.text(self.scroll_x + pyxel.width - 50, self.scroll_y + 5, f"SCORE: {self.score}", 7)
         pyxel.text(self.scroll_x + pyxel.width - 40, self.scroll_y + 15, f"TIME: {self.time_left}", 7)
 
         # ゲーム終了時のメッセージ表示
