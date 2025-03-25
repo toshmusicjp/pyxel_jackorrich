@@ -55,7 +55,7 @@ class App:
 
     def update(self):
         if self.is_goal or self.is_game_over:
-            if pyxel.btnp(pyxel.KEY_A):
+            if pyxel.btnp(pyxel.KEY_A) or pyxel.btn(pyxel.GAMEPAD1_BUTTON_B):
                 self.restart_game()
             return  # ゲーム終了時は操作無効
 
@@ -71,11 +71,11 @@ class App:
                 self.is_game_over = True
 
         # 操作判定
-        if pyxel.btn(pyxel.KEY_LEFT):
+        if pyxel.btn(pyxel.KEY_LEFT) or pyxel.btn(pyxel.GAMEPAD1_BUTTON_DPAD_LEFT):
             if -3 < self.dx:
                 self.dx -= 1
             self.pldir = -1
-        elif pyxel.btn(pyxel.KEY_RIGHT):
+        elif pyxel.btn(pyxel.KEY_RIGHT) or pyxel.btn(pyxel.GAMEPAD1_BUTTON_DPAD_RIGHT):
             if self.dx < 3:
                 self.dx += 1
             self.pldir = 1
@@ -104,7 +104,7 @@ class App:
         if self.jump == 0:
             if self.chkwall(self.x, self.y + 1) == 0:
                 self.jump = 2
-            if pyxel.btnp(pyxel.KEY_SPACE):
+            if pyxel.btnp(pyxel.KEY_SPACE) or pyxel.btn(pyxel.GAMEPAD1_BUTTON_A):
                 self.dy = 8
                 self.jump = 1
         else:
@@ -151,7 +151,7 @@ class App:
         pyxel.blt(self.x, self.y, 0, 0, 8, self.pldir * 8, 8, 0)
 
         # 画面右上にスコアと残り時間表示
-        pyxel.text(self.scroll_x + pyxel.width - 45, self.scroll_y + 5, f"SCORE: {self.score}", 7)
+        pyxel.text(self.scroll_x + pyxel.width - 48, self.scroll_y + 5, f"SCORE: {self.score}", 7)
         pyxel.text(self.scroll_x + pyxel.width - 40, self.scroll_y + 15, f"TIME: {self.time_left}", 7)
 
         # ゲーム終了時のメッセージ表示
