@@ -71,11 +71,11 @@ class App:
                 self.is_game_over = True
 
         # 操作判定
-        if pyxel.btn(pyxel.KEY_LEFT) or pyxel.btnp(pyxel.GAMEPAD1_BUTTON_DPAD_LEFT, 8, 2):
+        if pyxel.btn(pyxel.KEY_LEFT) or pyxel.btn(pyxel.GAMEPAD1_BUTTON_DPAD_LEFT):
             if -3 < self.dx:
                 self.dx -= 1
             self.pldir = -1
-        elif pyxel.btn(pyxel.KEY_RIGHT) or pyxel.btnp(pyxel.GAMEPAD1_BUTTON_DPAD_RIGHT, 8, 2):
+        elif pyxel.btn(pyxel.KEY_RIGHT) or pyxel.btn(pyxel.GAMEPAD1_BUTTON_DPAD_RIGHT):
             if self.dx < 3:
                 self.dx += 1
             self.pldir = 1
