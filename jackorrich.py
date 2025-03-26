@@ -139,6 +139,14 @@ class App:
             pyxel.tilemap(0).pset(xi, yi, (0, 0))
             pyxel.play(1, 9, loop=False)
 
+        # ガール判定
+        if pyxel.tilemap(0).pget(xi, yi) == (0, 5):
+            self.score += 500
+            self.time_left -= 5
+            pyxel.tilemap(0).pset(xi, yi, (0, 0))
+            for _ in range(5):
+                pyxel.play(1, 8, loop=False)
+
         # ゴール判定
         if pyxel.tilemap(0).pget(xi, yi) == (1, 3):
             self.is_goal = True
@@ -161,6 +169,6 @@ class App:
             pyxel.text(self.scroll_x + 45, self.scroll_y + 56, "GAME OVER!", 7)
 
         if self.is_goal or self.is_game_over:
-            pyxel.text(self.scroll_x + 25, self.scroll_y + 70, "PRESS A KEY TO RESTART", 7)
+            pyxel.text(self.scroll_x + 30, self.scroll_y + 70, "PRESS A KEY TO RESTART", 7)
 
 App()
