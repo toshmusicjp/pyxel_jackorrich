@@ -69,6 +69,7 @@ class App:
             self.time_left -= 1
             if self.time_left <= 1:
                 self.is_game_over = True
+                pyxel.play(1, 12, loop=False)
 
         # 操作判定
         if pyxel.btn(pyxel.KEY_LEFT) or pyxel.btnp(pyxel.GAMEPAD1_BUTTON_DPAD_LEFT, 1, 1):
@@ -125,6 +126,7 @@ class App:
         # 0以下に落下したらゲームオーバー
         if self.y > 128:
             self.is_game_over = True
+            pyxel.play(1, 12, loop=False)
 
         # コイン判定
         xi, yi = (self.x + 4) // 8, (self.y + 4) // 8
@@ -144,12 +146,12 @@ class App:
             self.score += 500
             self.time_left -= 5
             pyxel.tilemap(0).pset(xi, yi, (0, 0))
-            for _ in range(5):
-                pyxel.play(1, 8, loop=False)
+            pyxel.play(1, 10, loop=False)
 
         # ゴール判定
         if pyxel.tilemap(0).pget(xi, yi) == (1, 3):
             self.is_goal = True
+            pyxel.play(1, 11, loop=False)
 
     def draw(self):
         pyxel.cls(0)
